@@ -12,23 +12,30 @@ import ru.petrolplus.pos.room.mapper.RoomBaseSettingsMapper
 class RoomPersistenceStorage private constructor(
   private val dao: BaseSettingsDao, private val mapper: RoomBaseSettingsMapper
 ) : PersistanceStorage<BaseSetting> {
-  override fun addBaseSettings(setting: BaseSetting) {
+  override suspend fun addBaseSettings(setting: BaseSetting) {
     dao.addBaseSettings(mapper.toT(setting))
   }
 
-  override fun loadAddBaseSettings() = mapper.toListBaseSetting(dao.loadAddBaseSettings())
+  override suspend fun loadAddBaseSettings() = mapper.toListBaseSetting(dao.loadAddBaseSettings())
 
 
-  override fun loadBaseSettingById(id: Long): BaseSetting? =
+  override suspend fun loadBaseSettingById(id: Long): BaseSetting? =
     dao.loadBaseSettingById(id)?.let { mapper.toBaseSetting(it) }
 
-  override fun updateBaseSetting(setting: BaseSetting) {
+  override suspend fun updateBaseSetting(setting: BaseSetting) {
     dao.updateBaseSetting(mapper.toT(setting))
   }
 
   companion object {
     private var INSTANCE: RoomPersistenceStorage? = null
     private val LOCK = Any()
+
+    /**
+     * Предоставляет Singleton экземпляр [RoomPersistenceStorage]
+     *
+     * @param application контекст приложения.
+     * @return Singleton экземпляр [RoomPersistenceStorage]
+     */
     fun getInstance(application: Application): RoomPersistenceStorage {
       INSTANCE?.let { return it }
 

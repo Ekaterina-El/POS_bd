@@ -10,18 +10,18 @@ package ru.petrolplus.pos.persistancestorage
  */
 interface PersistanceStorage<T> {
   /**
-   * Добавляет данные о настройке в базе данных.
+   * Добавляет данные о настройке в базу данных.
    *
    * @param data Данные для сохранения.
    */
-  fun addBaseSettings(data: T)
+  suspend fun addBaseSettings(data: T)
 
   /**
    * Загружает все настройки из базы данных.
    *
    * @return Загруженные данные
    */
-  fun loadAddBaseSettings(): List<T>
+  suspend fun loadAddBaseSettings(): List<T>
 
   /**
    * Загружает настройки по id из базы данных.
@@ -29,12 +29,12 @@ interface PersistanceStorage<T> {
    * @param id Идентификатор настроек
    * @return Загруженные найстройки или null
    */
-  fun loadBaseSettingById(id: Long): T?
+  suspend fun loadBaseSettingById(id: Long): T?
 
   /**
    * Обновляет данные в базе данных.
    *
    * @param data Новые данные для обновления.
    */
-  fun updateBaseSetting(data: T)
+  suspend fun updateBaseSetting(data: T)
 }
