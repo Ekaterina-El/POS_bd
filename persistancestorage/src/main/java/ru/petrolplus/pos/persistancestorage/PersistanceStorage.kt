@@ -14,14 +14,14 @@ interface PersistanceStorage {
    *
    * @param data Данные для сохранения.
    */
-  suspend fun <T: BaseSetting> addBaseSettings(data: T)
+  suspend fun addBaseSettings(data: BaseSetting)
 
   /**
    * Загружает все настройки из базы данных.
    *
    * @return Загруженные данные
    */
-  suspend fun <T: BaseSetting> loadAddBaseSettings(): List<T>
+  suspend fun loadAddBaseSettings(): List<BaseSetting>
 
   /**
    * Загружает настройки по id из базы данных.
@@ -29,12 +29,13 @@ interface PersistanceStorage {
    * @param id Идентификатор настроек
    * @return Загруженные найстройки или null
    */
-  suspend fun <T: BaseSetting> loadBaseSettingById(id: Long): T?
+  suspend fun loadBaseSettingById(id: Long): BaseSetting?
+
 
   /**
    * Обновляет данные в базе данных.
    *
    * @param data Новые данные для обновления.
    */
-  suspend fun <T: BaseSetting> updateBaseSetting(data: T)
+  suspend fun updateBaseSetting(data: BaseSetting)
 }

@@ -12,19 +12,17 @@ import ru.petrolplus.pos.room.mapper.RoomBaseSettingsMapper
 class RoomPersistenceStorage private constructor(
   private val dao: BaseSettingsDao, private val mapper: RoomBaseSettingsMapper
 ) : PersistanceStorage {
-  override suspend fun <T: BaseSetting> addBaseSettings(data: T) {
+  override suspend fun addBaseSettings(data: BaseSetting) {
     dao.addBaseSettings(mapper.toT(data))
   }
 
-  @Suppress("UNCHECKED_CAST")
-  override suspend fun <T: BaseSetting> loadAddBaseSettings(): List<T> =
-    mapper.toListBaseSetting(dao.loadAddBaseSettings()) as List<T>
+  override suspend fun loadAddBaseSettings(): List<BaseSetting> =
+    mapper.toListBaseSetting(dao.loadAddBaseSettings())
 
-  @Suppress("UNCHECKED_CAST")
-  override suspend fun <T: BaseSetting> loadBaseSettingById(id: Long): T? =
-    dao.loadBaseSettingById(id)?.let { mapper.toBaseSetting(it) }?.let { it as T }
+  override suspend fun loadBaseSettingById(id: Long): BaseSetting? =
+    dao.loadBaseSettingById(id)?.let { mapper.toBaseSetting(it) }
 
-  override suspend fun <T: BaseSetting> updateBaseSetting(data: T) {
+  override suspend fun updateBaseSetting(data: BaseSetting) {
     dao.updateBaseSetting(mapper.toT(data))
   }
 
