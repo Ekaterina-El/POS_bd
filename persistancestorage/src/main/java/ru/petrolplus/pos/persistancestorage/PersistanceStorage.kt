@@ -7,8 +7,6 @@ package ru.petrolplus.pos.persistancestorage
  * без привязки к конкретной библиотеке.
  *
  * Для работы с базой данных, создайте класс реализующий этот интерфейс.
- *
- * @see RoomPersistenceStorage
  */
 interface PersistanceStorage <T> {
     /**
@@ -21,7 +19,7 @@ interface PersistanceStorage <T> {
     /**
      * Загружает данные из базы данных.
      *
-     * @return Загруженные данные или пустая строка, если данных нет.
+     * @return Загруженные данные.
      */
     fun loadData(): List<T>
 
