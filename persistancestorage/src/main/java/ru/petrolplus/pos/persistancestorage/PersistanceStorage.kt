@@ -10,25 +10,25 @@ package ru.petrolplus.pos.persistancestorage
  *
  * @see RoomPersistenceStorage
  */
-interface PersistanceStorage {
+interface PersistanceStorage <T> {
     /**
      * Сохраняет данные в базе данных.
      *
      * @param data Данные для сохранения.
      */
-    fun saveData(data: String)
+    fun saveData(data: T)
 
     /**
      * Загружает данные из базы данных.
      *
      * @return Загруженные данные или пустая строка, если данных нет.
      */
-    fun loadData(): String
+    fun loadData(): List<T>
 
     /**
      * Обновляет данные в базе данных.
      *
      * @param data Новые данные для обновления.
      */
-    fun updateData(data: String)
+    fun updateData(data: T)
 }
