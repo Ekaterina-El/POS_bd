@@ -6,4 +6,8 @@ data class BaseSetting(
     val terminalId: Int,
     val hostIp: String,
     val hostPort: Int
-)
+) {
+    override fun toString(): String {
+        return "[$id] Acquirer: $acquirerId - Terminal: $terminalId $hostIp:$hostPort"
+    }
+}
