@@ -12,8 +12,8 @@ import ru.petrolplus.pos.room.mapper.RoomBaseSettingsMapper
 class RoomPersistenceStorage private constructor(
   private val dao: BaseSettingsDao, private val mapper: RoomBaseSettingsMapper
 ) : PersistanceStorage {
-  override suspend fun addBaseSettings(data: BaseSetting) {
-    dao.addBaseSettings(mapper.toT(data))
+  override suspend fun addBaseSettings(data: BaseSetting): Long {
+    return dao.addBaseSettings(mapper.toT(data))
   }
 
   override suspend fun loadAddBaseSettings(): List<BaseSetting> =

@@ -20,7 +20,7 @@ internal interface BaseSettingsDao {
      * @param settings Данные для вставки.
      */
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addBaseSettings(settings: BaseSettingsEntity)
+    suspend fun addBaseSettings(setting: BaseSettingsEntity): Long
 
     /**
      * Запрашивает настройки из таблицы "BASE_SETTINGS" по заданному ID.

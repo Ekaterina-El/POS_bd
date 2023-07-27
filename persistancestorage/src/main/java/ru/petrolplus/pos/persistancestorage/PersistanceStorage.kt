@@ -14,7 +14,7 @@ interface PersistanceStorage {
    *
    * @param data Данные для сохранения.
    */
-  suspend fun addBaseSettings(data: BaseSetting)
+  suspend fun addBaseSettings(data: BaseSetting): Long
 
   /**
    * Загружает все настройки из базы данных.
