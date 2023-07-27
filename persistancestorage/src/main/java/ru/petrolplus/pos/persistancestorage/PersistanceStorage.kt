@@ -6,35 +6,35 @@ package ru.petrolplus.pos.persistancestorage
  * Он позволяет использовать различные реализации базы данных (например, Room, Realm, SQLite и т.д.)
  * без привязки к конкретной библиотеке.
  *
- * Для работы с базой данных, создайте класс реализующий этот интерфейс.
+ * Для работы с базой данных, создайте класс реализующий этот интерфейс, mapper и сущность в которой будете хранить данные.
  */
-interface PersistanceStorage <T> {
-    /**
-     * Добавляет данные о настройке в базе данных.
-     *
-     * @param data Данные для сохранения.
-     */
-    fun addBaseSettings(data: T)
+interface PersistanceStorage<T> {
+  /**
+   * Добавляет данные о настройке в базе данных.
+   *
+   * @param data Данные для сохранения.
+   */
+  fun addBaseSettings(data: T)
 
-    /**
-     * Загружает все настройки из базы данных.
-     *
-     * @return Загруженные данные
-     */
-    fun loadAddBaseSettings(): List<T>
+  /**
+   * Загружает все настройки из базы данных.
+   *
+   * @return Загруженные данные
+   */
+  fun loadAddBaseSettings(): List<T>
 
-    /**
-     * Загружает настройки по id из базы данных.
-     *
-     * @param id Идентификатор настроек
-     * @return Загруженные найстройки или null
-     */
-    fun loadBaseSettingById(id: Long): T?
+  /**
+   * Загружает настройки по id из базы данных.
+   *
+   * @param id Идентификатор настроек
+   * @return Загруженные найстройки или null
+   */
+  fun loadBaseSettingById(id: Long): T?
 
-    /**
-     * Обновляет данные в базе данных.
-     *
-     * @param data Новые данные для обновления.
-     */
-    fun updateBaseSetting(data: T)
+  /**
+   * Обновляет данные в базе данных.
+   *
+   * @param data Новые данные для обновления.
+   */
+  fun updateBaseSetting(data: T)
 }
